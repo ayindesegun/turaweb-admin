@@ -13,6 +13,7 @@ import Orders from './pages/orders/Orders'
 //import Orders from './pages/orders/Orders'
 import { AuthContext } from './context/AuthContext'
 import Product from './pages/productList/Product'
+import NewUsers from './pages/newUsers/NewUsers'
 
 const App = () => {
   const { currentUser } = useContext(AuthContext)
@@ -53,6 +54,15 @@ const App = () => {
                 </RequireAuth>
               }
             />
+
+            <Route
+              path='users/single'
+              element={
+                <RequireAuth>
+                  <NewUsers />
+                </RequireAuth>
+              }
+            />
             <Route path='users'>
               <Route
                 index
@@ -66,7 +76,7 @@ const App = () => {
                 path=':userId'
                 element={
                   <RequireAuth>
-                    <Single />
+                    <Single inputs={userInputs} />
                   </RequireAuth>
                 }
               />
